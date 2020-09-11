@@ -1,4 +1,4 @@
-module github.com/VerizonDigital/vflow
+module github.com/fazlinovic/vflow
 
 go 1.14
 
