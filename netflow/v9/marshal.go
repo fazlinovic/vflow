@@ -152,6 +152,10 @@ func (m *Message) encodeAgent(b *bytes.Buffer) {
 	b.WriteString("\"AgentID\":\"")
 	b.WriteString(m.AgentID)
 	b.WriteString("\",")
+
+	b.WriteString("\"AgentID2\":\"")
+	b.WriteString(m.AgentID)
+	b.WriteString("\",")
 }
 
 func (m *Message) writeValue(b *bytes.Buffer, i, j int) error {
