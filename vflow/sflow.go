@@ -110,7 +110,7 @@ func (s *SFlow) run() {
 		}()
 	}
 
-	go mirrorSFlowDispatcher(sFlowMCh)
+	//go mirrorSFlowDispatcher(sFlowMCh)
 
 	logger.Printf("sFlow is running (UDP: listening on [::]:%d workers#: %d)", s.port, s.workers)
 
