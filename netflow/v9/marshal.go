@@ -149,10 +149,9 @@ func (m *Message) encodeHeader(b *bytes.Buffer) {
 }
 
 func (m *Message) encodeAgent(b *bytes.Buffer) {
-	b.WriteString("\"AgentID\":\"")
+	b.WriteString("\"AgentID_\":\"")
 	b.WriteString(m.AgentID)
 	b.WriteString("\",")
-
 	b.WriteString("\"AgentID2\":\"")
 	b.WriteString(m.AgentID)
 	b.WriteString("\",")

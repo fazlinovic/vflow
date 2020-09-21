@@ -3,8 +3,10 @@ module github.com/fazlinovic/vflow
 go 1.14
 
 require (
+	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/Shopify/sarama v1.26.3
 	github.com/VerizonDigital/vflow v0.8.0
+	github.com/bsm/sarama-cluster v2.1.15+incompatible
 	github.com/nats-io/nats.go v1.10.0
 	github.com/nsqio/go-nsq v1.0.8
 	github.com/prometheus/client_golang v1.6.0
