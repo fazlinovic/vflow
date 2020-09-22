@@ -88,9 +88,10 @@ type Decoder struct {
 
 // Message represents Netflow decoded data
 type Message struct {
-	AgentID  string
-	Header   PacketHeader
-	DataSets [][]DecodedField
+	AgentID   string
+	FlowSetID uint16
+	Header    PacketHeader
+	DataSets  [][]DecodedField
 }
 
 //   The Packet Header format is specified as:
@@ -433,6 +434,7 @@ func (d *Decoder) decodeSet(mem MemCache, msg *Message) error {
 				setHeader.FlowSetID,
 			))
 		}
+		msg.FlowSetID = setHeader.FlowSetID
 	}
 
 	// the next set should be greater than 4 bytes otherwise that's padding
