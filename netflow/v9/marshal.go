@@ -152,7 +152,7 @@ func (m *Message) encodeAgent(b *bytes.Buffer) {
 	b.WriteString("\"AgentID\":\"")
 	b.WriteString(m.AgentID)
 	b.WriteString("\",")
-	b.WriteString(",\"FlowSetID\":")
+	b.WriteString("\"FlowSetID\":")
 	b.WriteString(strconv.FormatInt(int64(m.FlowSetID), 10))
 	b.WriteString("\",")
 }
