@@ -71,7 +71,7 @@ func (m *Message) encodeDataSet(b *bytes.Buffer) error {
 		b.WriteByte('[')
 		// Write FlowSetID as separate object
 		b.WriteString("{\"I\":\"FlowSetID\",")
-		b.WriteString(",\"V\":")
+		b.WriteString("\"V\":")
 		b.WriteString(strconv.FormatInt(int64(m.DataSets[i].FlowSetID), 10))
 		b.WriteString("},")
 
