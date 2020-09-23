@@ -86,12 +86,18 @@ type Decoder struct {
 	reader *reader.Reader
 }
 
+// DataSet represents single FlowSet
+type DataSet struct {
+	FlowSetID     uint16
+	DecodedFields []DecodedField
+}
+
 // Message represents Netflow decoded data
 type Message struct {
-	AgentID   string
-	FlowSetID uint16
-	Header    PacketHeader
-	DataSets  [][]DecodedField
+	AgentID string
+	Header  PacketHeader
+	//DataSets  [][]DecodedField
+	DataSets []DataSet
 }
 
 //   The Packet Header format is specified as:
@@ -434,7 +440,7 @@ func (d *Decoder) decodeSet(mem MemCache, msg *Message) error {
 				setHeader.FlowSetID,
 			))
 		}
-		msg.FlowSetID = setHeader.FlowSetID
+		//msg.FlowSetID = setHeader.FlowSetID //TODO move to other location
 	}
 
 	// the next set should be greater than 4 bytes otherwise that's padding
@@ -457,8 +463,13 @@ func (d *Decoder) decodeSet(mem MemCache, msg *Message) error {
 			// Data set
 			var data []DecodedField
 			data, err = d.decodeData(tr)
+
 			if err == nil {
-				msg.DataSets = append(msg.DataSets, data)
+				var DataSet DataSet
+				//DataSet.DecodedFields = append(DataSet.DecodedFields, data)
+				DataSet.DecodedFields = data
+				DataSet.FlowSetID = setHeader.FlowSetID
+				msg.DataSets = append(msg.DataSets, DataSet)
 			}
 		}
 	}
