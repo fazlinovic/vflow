@@ -94,9 +94,8 @@ type DataSet struct {
 
 // Message represents Netflow decoded data
 type Message struct {
-	AgentID string
-	Header  PacketHeader
-	//DataSets  [][]DecodedField
+	AgentID  string
+	Header   PacketHeader
 	DataSets []DataSet
 }
 
