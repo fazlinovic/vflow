@@ -66,7 +66,7 @@ func (m *Message) encodeDataSet(b *bytes.Buffer) error {
 
 	for i := range m.DataSets {
 		//length = len(m.DataSets[i])
-		length = len(m.DataSets)
+		length = len(m.DataSets[i].DecodedFields)
 
 		b.WriteByte('[')
 		for j := range m.DataSets[i].DecodedFields {
